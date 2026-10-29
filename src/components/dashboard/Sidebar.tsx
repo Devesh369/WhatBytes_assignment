@@ -146,8 +146,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
           })}
         </div>
 
-        {/* Auth Suite Link */}
-        <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800/80">
+        {/* Links to Other Assignment Modules */}
+        <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800/80 space-y-1">
+          <button
+            type="button"
+            onClick={() => {
+              router.push('/multi-step-form');
+              onCloseMobile();
+            }}
+            className={cn(
+              'w-full flex items-center gap-3 px-2.5 py-2 rounded-lg text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition-colors',
+              collapsed && 'justify-center px-2'
+            )}
+            title="Multi-Step Registration Form (React-Hook-Form + Zustand)"
+          >
+            <Sparkles className="w-4 h-4 shrink-0" />
+            {!collapsed && <span className="flex-1 text-left truncate">Multi-Step Form</span>}
+          </button>
+
           <button
             type="button"
             onClick={handleAuthPortalClick}

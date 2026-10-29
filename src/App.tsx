@@ -12,6 +12,7 @@ import { ProfilePage } from './pages/ProfilePage';
 import { SettingsPage } from './pages/SettingsPage';
 import { NextJsGuidePage } from './pages/NextJsGuidePage';
 import { TestSuitePage } from './pages/TestSuitePage';
+import { MultiStepFormPage } from './pages/MultiStepFormPage';
 
 function AppContent() {
   const { pathname } = useRouter();
@@ -23,6 +24,8 @@ function AppContent() {
 
   const renderCurrentView = () => {
     switch (pathname) {
+      case '/multi-step-form':
+        return <MultiStepFormPage />;
       case '/login':
         return <LoginPage />;
       case '/signup':

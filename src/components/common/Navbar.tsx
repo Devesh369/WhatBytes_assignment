@@ -40,6 +40,17 @@ export const Navbar: React.FC = () => {
             <LayoutDashboard className="w-4 h-4" />
             Shadcn Dashboard
           </button>
+          <button
+            onClick={() => handleNav('/multi-step-form')}
+            className={`flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
+              currentPath === '/multi-step-form'
+                ? 'text-indigo-600 font-semibold'
+                : 'hover:text-slate-900'
+            }`}
+          >
+            <BookOpen className="w-4 h-4" />
+            Multi-Step Form
+          </button>
           {!isAuthenticated ? (
             <>
               <button
