@@ -1,8 +1,10 @@
 import React from 'react';
 import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './components/ui/toast-provider';
 import { useRouter } from './hooks/useRouter';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import { ShadcnDashboardPage } from './pages/ShadcnDashboardPage';
 import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
 import { DashboardPage } from './pages/DashboardPage';
@@ -14,13 +16,18 @@ import { TestSuitePage } from './pages/TestSuitePage';
 function AppContent() {
   const { pathname } = useRouter();
 
+  // The primary Shadcn Dashboard uses its dedicated fixed sidebar & top navbar layout
+  if (pathname === '/' || pathname === '/dashboard') {
+    return <ShadcnDashboardPage />;
+  }
+
   const renderCurrentView = () => {
     switch (pathname) {
       case '/login':
         return <LoginPage />;
       case '/signup':
         return <SignupPage />;
-      case '/dashboard':
+      case '/auth-portal':
         return <DashboardPage />;
       case '/profile':
         return <ProfilePage />;
@@ -31,13 +38,12 @@ function AppContent() {
       case '/test-suite':
         return <TestSuitePage />;
       default:
-        // Default entry routes to /login
-        return <LoginPage />;
+        return <ShadcnDashboardPage />;
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 font-sans text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-900 font-sans text-slate-900 dark:text-slate-100 selection:bg-indigo-100 selection:text-indigo-900">
       <Navbar />
       <main className="flex-1">
         {renderCurrentView()}
@@ -50,7 +56,9 @@ function AppContent() {
 export default function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <ToastProvider>
+        <AppContent />
+      </ToastProvider>
     </AuthProvider>
   );
 }

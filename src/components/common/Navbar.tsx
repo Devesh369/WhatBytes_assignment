@@ -29,6 +29,17 @@ export const Navbar: React.FC = () => {
 
         {/* Zone 2: 4-5 concise single-line nav links */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <button
+            onClick={() => handleNav('/dashboard')}
+            className={`flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
+              currentPath === '/dashboard' || currentPath === '/'
+                ? 'text-indigo-600 font-semibold'
+                : 'hover:text-slate-900'
+            }`}
+          >
+            <LayoutDashboard className="w-4 h-4" />
+            Shadcn Dashboard
+          </button>
           {!isAuthenticated ? (
             <>
               <button
@@ -51,13 +62,13 @@ export const Navbar: React.FC = () => {
           ) : (
             <>
               <button
-                onClick={() => handleNav('/dashboard')}
+                onClick={() => handleNav('/auth-portal')}
                 className={`flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
-                  currentPath === '/dashboard' ? 'text-indigo-600 font-semibold' : 'hover:text-slate-900'
+                  currentPath === '/auth-portal' ? 'text-indigo-600 font-semibold' : 'hover:text-slate-900'
                 }`}
               >
-                <LayoutDashboard className="w-4 h-4" />
-                Dashboard
+                <Shield className="w-4 h-4" />
+                Auth Session
               </button>
               <button
                 onClick={() => handleNav('/profile')}
@@ -67,15 +78,6 @@ export const Navbar: React.FC = () => {
               >
                 <UserCheck className="w-4 h-4" />
                 Profile
-              </button>
-              <button
-                onClick={() => handleNav('/settings')}
-                className={`flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 ${
-                  currentPath === '/settings' ? 'text-indigo-600 font-semibold' : 'hover:text-slate-900'
-                }`}
-              >
-                <Shield className="w-4 h-4" />
-                Security
               </button>
             </>
           )}
