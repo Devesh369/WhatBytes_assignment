@@ -1,0 +1,6 @@
+{
+  "name": "AuthPulse - Next.js Custom Auth Hooks & Session Suite",
+  "description": "Production-grade authentication flow featuring reusable custom React hooks (useAuth, useLogin, useSignup), real-time validation, session state management, and protected routing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

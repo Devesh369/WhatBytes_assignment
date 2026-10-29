@@ -1,9 +1,20 @@
+# Python
 env/
 venv/
 __pycache__/
 *.pyc
-.env
 db.sqlite3
+
+# Node & Build
+node_modules/
+build/
+dist/
+coverage/
+*.log
+
+# Environment & IDE
+.env*
+!.env.example
 .DS_Store
 .vscode/
 .idea/
